@@ -1,12 +1,12 @@
 #include <stdio.h>
 #ifdef _WIN32
 #include <windows.h>
-#define sleep(x) Sleep(x * 1000)
 #else
 #include <unistd.h>
+#define Sleep(x) usleep(x * 1000)
 #endif
 
-#define second 1
+#define miliseconds 1000
 
 void hidecursor();
 void movecursortop(int pos);
@@ -36,7 +36,7 @@ int main()
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
-            sleep(second);
+            Sleep(miliseconds);
         }
     }
 
