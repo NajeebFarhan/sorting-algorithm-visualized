@@ -28,6 +28,7 @@ int main()
     {
         for (int j = 0; j < size - i - 1; j++)
         {
+            // function that will render the array in visual way
             render_array(arr, size, j, size - i - 1);
 
             if (arr[j] > arr[j + 1])
@@ -36,6 +37,7 @@ int main()
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
+            // to cause delay between the render, creating an animation
             Sleep(miliseconds);
         }
     }
