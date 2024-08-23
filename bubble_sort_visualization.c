@@ -13,7 +13,7 @@ void movecursortop(int pos);
 void showcursor();
 void clearscreen();
 
-void render_array(int *arr, int size, int pos1, int pos2);
+void render_array(int *arr, int size, int pos, int sortedindex);
 int largest_num(int *arr, int size);
 
 int main()
@@ -28,7 +28,7 @@ int main()
     {
         for (int j = 0; j < size - i - 1; j++)
         {
-            render_array(arr, size, j, j + 1);
+            render_array(arr, size, j, size - i - 1);
 
             if (arr[j] > arr[j + 1])
             {
@@ -78,7 +78,7 @@ int largest_num(int *arr, int size)
     return largest;
 }
 
-void render_array(int *arr, int size, int pos1, int pos2)
+void render_array(int *arr, int size, int pos, int sortedindex)
 {
     int max_length = largest_num(arr, size);
 
@@ -94,14 +94,18 @@ void render_array(int *arr, int size, int pos1, int pos2)
         for (int j = arr[i]; j < max_length; j++)
             printf(" ");
 
-        if (i == pos1 && i + 1 == pos2)
+        if (i > sortedindex)
+            printf("  [X]");
+
+        if (i == pos && i + 1 == pos + 1)
         {
             printf("<- ");
-            if (arr[pos1] > arr[pos2])
-                printf("swap[%d<->%d]", arr[pos1], arr[pos2]);
+            if (arr[pos] > arr[pos + 1])
+                printf("swap[%d<->%d]", arr[pos], arr[pos + 1]);
         }
         else
             printf("              ");
+
         printf("\n");
     }
 
