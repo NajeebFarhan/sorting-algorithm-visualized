@@ -19,6 +19,7 @@ int main()
 {
     hidecursor();
 
+    // Main content
     int arr[] = {9, 1, 8, 2, 7, 3, 6, 4, 5};
     int size = sizeof(arr) / sizeof(int);
 
@@ -34,7 +35,7 @@ int main()
             {
                 min = j;
             }
-            Sleep(1000);
+            Sleep(miliseconds);
         }
         int temp = arr[i];
         arr[i] = arr[min];
